@@ -1,0 +1,97 @@
+﻿@model Blog.Web.Models.HomeVideoViewModel
+
+<div class="primary">
+    <!-- Video-->
+    <div class="featured_posts clearfix" id="videos">
+        <h3 class="widget-title dark">
+            <a href="/video.html"><span>Video</span></a>
+            <p class="linktabs">
+                @foreach (var child in Model.ChildCategory)
+                {
+                    <a href="/@(child.Alias).html">@child.Name</a>
+                }
+            </p>
+        </h3>
+        <ul class="postvideo">
+            @foreach (var post in Model.Videos)
+            {
+                <li>
+                    <div class="item-vd">
+                        <a class="bx-img" href="/@post.Alias-@(post.ID).html" title="@post.Name" rel="bookmark">
+                            <img width="455" height="260" src="@post.Image" class="attachment-large size-large wp-post-image" alt="@post.Name" 0="45" 1="45" 2="1" />
+                        </a>
+                        <a class="act" href="/@post.Alias-@(post.ID).html">@post.Name</a>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <script>
+        $(window).load(function () {
+            var a, b, c = false;
+            var i = 0;
+            var h = 0;
+            $(".postvideo li").each(function () {
+                var obj = $(this);
+                var hh = obj.height();
+                if (h < hh) {
+                    h = hh;
+                }
+
+                i++;
+                if (i % 3 === 0) {
+                    c = obj;
+                    if (a) {
+                        a.css('height', h + 'px');
+                    }
+                    if (b) {
+                        b.css('height', h + 'px');
+                    }
+                    if (c) {
+                        c.css('height', h + 'px');
+                    }
+                    i = 0;
+                    h = 0;
+                } else if (i % 3 === 1) {
+                    a = obj;
+                } else if (i % 3 === 2) {
+                    b = obj;
+                }
+
+            });
+        });
+    </script>
+</div>
+<div class="secondary">
+    <div class="featured_posts clearfix" id="congdong-news">
+        <h3 class="widget-title green">
+            <a href="/cong-dong.html"><span>Cộng Đồng</span></a>
+        </h3>
+        <div class="vertical_posts ">
+            @foreach (var post in Model.Congdong)
+            {
+                <div class="single-article clearfix">
+                    <figure>
+                        <a href="/@post.Alias-@(post.ID).html" title="@post.Name" rel="bookmark">
+                            <img width="1280" height="720" src="@post.Image" class="attachment-large size-large wp-post-image" alt="@post.Name" 0="45" 1="45" 2="1" srcset="@post.Image 300w, @post.Image 600w, @post.Image 1280w, @post.Image 1600w" sizes="(max-width: 1280px) 100vw, 1280px" />
+                        </a>
+                    </figure>
+                    <div class="article-content">
+                        <h3 class="entry-title"> <a href="/@post.Alias-@(post.ID).html">@post.Name</a> </h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <style>
+        .postvideo .item-vd .bx-img img {
+            opacity: 1;
+        }
+
+            .postvideo .item-vd .bx-img img:hover {
+                opacity: 0.8;
+            }
+    </style>
+</div>

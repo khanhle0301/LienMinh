@@ -1,2 +1,0 @@
-# LienMinh
-league of legends

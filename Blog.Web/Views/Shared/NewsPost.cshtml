@@ -1,0 +1,57 @@
+﻿@model Blog.Web.Models.HomeLastedNewsViewModel
+
+<div class="primary">
+    <div id="recent-posts-flexslider-2" class="widget recent-posts-flexslider-class">
+        <div class="inner">
+            <!-- lasted news-->
+            <div class="featured_posts clearfix" id="lasted-news">
+                <h3 class="widget-title red">
+                    <a href="javascript:;">
+                        <span>Tin mới</span>
+                    </a>
+                </h3>
+                <div class="first-post">
+                    <div class="single-article">
+                        @foreach (var post in Model.LastedNews.Take(1))
+            {
+                            <figure>
+                                <a class="bx-img" href="/@post.Alias-@(post.ID).html" title="@post.Name" rel="bookmark">
+                                    <img width="600" height="338" src="@post.Image" class="attachment-medium size-medium wp-post-image" alt="@post.Name" srcset="@post.Image 300w, @post.Image 600w, @post.Image 852w" sizes="(max-width: 600px) 100vw, 600px" />
+                                </a>
+                            </figure>
+                            <div class="article-content">
+                                <h3 class="entry-title"> <a href="/@post.Alias-@(post.ID).html">@post.Name</a> </h3>
+                                <p>@post.Description</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="second-post">
+                    <div>
+                        <div class="listheroes">
+                            <ul class="listsubnews">
+                                @foreach (var post in Model.LastedNews.Skip(1))
+                                {
+                                    <li>
+                                        <a href="/@post.Alias-@(post.ID).html">@post.Name</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="secondary">
+    <div id="widget_sp_image-3" class="widget widget_sp_image">
+        <div class="inner">
+            <div class="featured_posts clearfix">
+                <a href="@Model.BannerNews.Url" target="_blank" class="widget_sp_image-image-link" title="@Model.BannerNews.Name">
+                    <img width="298" height="397" alt="@Model.BannerNews.Name" class="attachment-full" style="max-width: 100%;" src="@Model.BannerNews.Image" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

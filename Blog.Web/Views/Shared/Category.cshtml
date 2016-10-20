@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Blog.Web.Models.PostCategoryViewModel>
+
+<li id="menu-item-42" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-42">
+    <a href="/">Trang chủ</a>
+</li>
+@foreach (var category in Model.Where(x => x.ParentID == null))
+{
+    var childCategories = Model.Where(x => x.ParentID == category.ID);
+    if (childCategories.Count() > 0)
+    {
+        <li id="menu-item-32" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-32">
+            <a href="/@(category.Alias).html">@category.Name</a>
+            <ul class='sub-menu'>              
+                <div class='inner'>
+                    @foreach (var childCategory in childCategories)
+                    {
+                        <li id="menu-item-969931" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-969931">
+                            <a href="/@(childCategory.Alias).html">@childCategory.Name</a>
+                        </li>
+                    }
+                </div>
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li id="menu-item-42" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-42">
+            <a href="/@(category.Alias).html">@category.Name</a>
+        </li>
+    }
+}

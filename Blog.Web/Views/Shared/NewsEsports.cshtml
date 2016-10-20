@@ -1,0 +1,79 @@
+﻿@model Blog.Web.Models.HomeEsportViewModel
+
+<div class="primary">
+    <div class="featured_posts clearfix" id="newsEsports">
+        <h3 class="widget-title orange">
+            <a href="/tin-esports.html">
+                <span>Tin Esports</span>
+            </a>
+            <p class="linktabs">
+                @foreach (var child in Model.ChildCategory)
+                {
+                    <a href="/@(child.Alias).html">@child.Name</a>
+                }
+            </p>
+        </h3>
+        <div class="lastest-post">
+            @foreach (var post in Model.Esports)
+            {
+                <div class="single-article clearfix">
+                    <figure>
+                        <a class="bx-img" href="/@post.Alias-@(post.ID).html" title="@post.Name" rel="bookmark">
+                            <img width="600" height="338" src="@post.Image" class="attachment-large size-large wp-post-image" alt="@post.Name" 0="45" 1="45" 2="1" srcset="@post.Image 300w, @post.Image 600w" sizes="(max-width: 600px) 100vw, 600px" />
+                        </a>
+                    </figure>
+                    <div class="article-content">
+                        <h3 class="entry-title"> <a href="/@post.Alias-@(post.ID).html">@post.Name</a> </h3>
+                        <p>@post.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="secondary">
+    <div class="featured_posts clearfix" id="guides">
+        <h3 class="widget-title ">
+            <a href="/cam-nang/">
+                <span>Cẩm Nang</span>
+            </a>
+        </h3>
+        <div class="first-post vertical_inside ">
+            <div class="single-article">
+                @foreach (var post in Model.Camnang.Take(1))
+                {
+                    <figure>
+                        <a class="bx-img" href="/@post.Alias-@(post.ID)/" title="@post.Name" rel="bookmark">
+                            <img width="455" height="260" src="@post.Image" class="attachment-large size-large wp-post-image" alt="@post.Name" 0="45" 1="45" 2="1" />
+                        </a>
+                    </figure>
+                    <div class="article-content">
+                        <h3 class="entry-title">
+                            <a href="/@post.Alias-@(post.ID)/">@post.Name</a>
+                        </h3>
+                        <p>@post.Description </p>
+                    </div>
+                }
+
+            </div>
+            @foreach (var post in Model.Camnang.Skip(1))
+            {
+                <ul class="listsubnews">
+                    <li>
+                        <a href="/@post.Alias-@(post.ID)/">@post.Name</a>
+                    </li>
+                </ul>
+            }
+
+        </div>
+    </div>
+    <div id="widget_sp_image-6" class="widget widget_sp_image">
+        <div class="inner">
+            <div class="featured_posts clearfix">
+                <a href="@Model.BannerEsport.Url" target="_blank" class="widget_sp_image-image-link" title="@Model.BannerEsport.Name">
+                    <img width="298" height="397" alt="@Model.BannerEsport.Name" class="attachment-full" style="max-width: 100%;" src="@Model.BannerEsport.Image" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

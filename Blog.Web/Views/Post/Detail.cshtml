@@ -1,0 +1,117 @@
+﻿@model Blog.Web.Models.PostViewModel
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var url = Request.Url.ToString();
+}
+
+<link rel="stylesheet" href="http://img.cdn.ved.com.vn/web/lmht360/wp-content/themes/_gameplay/css/single-article.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="http://img.cdn.ved.com.vn/web/lmht360/wp-content/themes/_gameplay/css/shortcode.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="http://img.cdn.ved.com.vn/web/lmht360/wp-includes/js/tinymce/skins/wordpress/wp-content.css" type="text/css" media="screen, projection" />
+
+<div class="inContent clearfix">
+    <!-- Tin Esports-->
+    <div class="blockrows">
+        <!-- content left-->
+        <div class="primary">
+            <div class="postdetail">
+                <div class="" subtitle"><span>@Model.Name</span></div>
+                <div class="introduction">@Model.Description</div>
+                <div class="time">
+                    <i class="fa fa-folder-open"></i> @Model.PostCategory.Name |
+                    <i class="fa fa-calendar"></i> @Model.UpdatedDate.Value.ToString("d") |
+                    <i class="fa fa-user-secret"></i> By @Model.UpdatedBy
+                </div>
+                <div class="contpost">
+                    <!-- Social Ring Buttons Start -->
+                    <div class="social-ring">
+                        <div class="fb-like" data-href="@url" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                    </div><!-- Social Ring Buttons End -->
+                    @Html.Raw(Model.Content)
+                    <div class='tags' style='padding-bottom:10px;'>
+                        <span>Tags:&nbsp;&nbsp;</span>
+                        @foreach (var tag in (IEnumerable<Blog.Web.Models.TagViewModel>)ViewBag.Tags)
+                        {
+                            <a href="/tag/@(tag.ID).html" rel="tag">@tag.Name,</a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="bxrelate">
+                <h3 class="widget-title dark"><span>Các bài liên quan</span></h3><div class="featured_posts clearfix" id="videos">
+                    <ul class="postvideo">
+                        @foreach (var post in (IEnumerable<Blog.Web.Models.PostViewModel>)ViewBag.RelatedPosts)
+                        {
+                            <li class="item-1">
+                                <div style="padding:10px;">
+                                    <div class="__item-vd">
+                                        <a href="/@post.Alias-@(post.ID).html" title="@post.Name" class='img'>
+                                            <img width="300" height="200" src="@post.Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="@post.Name" title="@post.Name" />
+                                        </a>
+                                    </div>
+                                    <a href="/@post.Alias-@(post.ID).html" class="act" title="@post.Name" rel="bookmark">@post.Name</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <script>
+                    $(window).load(function () {
+                        var a, b, c = false;
+                        var i = 0;
+                        var h = 0;
+                        $(".postvideo li").each(function () {
+                            var obj = $(this);
+                            var hh = obj.height();
+                            if (h < hh) {
+                                h = hh;
+                            }
+
+                            i++;
+                            if (i % 3 === 0) {
+                                c = obj;
+                                if (a) {
+                                    a.css('height', h + 'px');
+                                }
+                                if (b) {
+                                    b.css('height', h + 'px');
+                                }
+                                if (c) {
+                                    c.css('height', h + 'px');
+                                }
+                                i = 0;
+                                h = 0;
+                            } else if (i % 3 === 1) {
+                                a = obj;
+                            } else if (i % 3 === 2) {
+                                b = obj;
+                            }
+
+                        });
+                    });
+                </script>
+            </div>
+            <div class="bxcomment">
+                <div class="fb-comments" data-href="@url" data-numposts="5"></div>
+            </div>
+        </div>
+        <div class="secondary">
+            <div id="recent-posts-hot-3" class="right-column recent-posts-hot-class">
+                <div class="inner">
+                    <div class="featured_posts clearfix" id="weekly-news">
+                        <h3 class="widget-title pink"><a href="javascript:;"><span>Tin nổi bật</span></a></h3>
+                        <div class="vertical_posts ">
+                            @{ Html.RenderAction("NewsHot", "Post");}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @{ Html.RenderAction("Banner", "Post");}
+        </div>
+    </div>
+</div>
+
+<link href="/Assets/client/css/custom-detail.css" rel="stylesheet" />
+
+

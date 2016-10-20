@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="newstop">
+    @{ Html.RenderAction("NewsTop", "Home");}
+</div>
+<div class="blockrows">
+    @{ Html.RenderAction("NewsPost", "Home");}
+</div>
+<div class="blockrows">
+    @{ Html.RenderAction("NewsGames", "Home");}
+</div>
+<div class="blockrows">
+    @{ Html.RenderAction("NewsEsports", "Home");}
+</div>
+<div class="blockrows">
+    @{ Html.RenderAction("Video", "Home");}
+</div>
+<div class="featured_posts clearfix" id="blockImg">
+    @{ Html.RenderAction("Cosplay", "Home");}
+</div>
+
+
+

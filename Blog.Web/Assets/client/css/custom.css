@@ -1,0 +1,9 @@
+﻿.bxgpl { margin-left:-20px;}
+.itemGpl { float:left; width:33.3333%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box; padding-left:20px; margin-bottom:20px}
+.itemGpl figure {
+    margin-bottom: 14px;
+}
+@media screen and (max-width:580px) {
+.bxgpl { margin-left:0px;}
+.itemGpl { float:none; width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box; padding-left:0px; margin-bottom:20px}
+}

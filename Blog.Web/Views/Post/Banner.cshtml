@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Blog.Web.Models.BannerViewModel>
+
+@foreach (var item in Model)
+{
+    <div id="widget_sp_image-5" class="right-column widget_sp_image">
+        <div class="inner">
+            <div class="featured_posts clearfix">
+                <a href="@item.Url" target="_blank" class="widget_sp_image-image-link" title="@item.Name">
+                    <img width="298" height="397" alt="@item.Name" class="attachment-full" style="max-width: 100%;" src="@item.Image" />
+                </a>
+            </div>
+        </div>
+    </div>
+}

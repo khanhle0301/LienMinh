@@ -1,0 +1,132 @@
+﻿@model Blog.Web.Infrastructure.Core.PaginationSet<Blog.Web.Models.PostViewModel>
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inContent clearfix">
+    <!-- Tin Esports-->
+    <div class="blockrows">
+        <!-- content left-->
+        <div class="primary">
+            <div class="box_featured_post">
+                <h3 class="widget-title black">
+                    <a href="javascript:;" class="">
+                        <span>@ViewBag.Tag.Name</span>
+                    </a>
+                    <p class="linktabs">
+                    </p>
+                </h3>
+                <div class="box_featured_posts">
+
+                    <div class="featured_posts clearfix" id="newsEsports">
+                        <div class="lastest-post">
+                            @foreach (var item in Model.Items)
+                            {
+                                <div class="single-article clearfix">
+                                    <figure>
+                                        <a href="/@item.Alias-@(item.ID).html">
+                                            <img width="600" height="338" src="@item.Image" class="attachment-large size-large wp-post-image" alt="@item.Name" 0="300" 1="200" srcset="@item.Image 300w, @item.Image 600w" sizes="(max-width: 600px) 100vw, 600px" />
+                                        </a>
+                                    </figure>
+                                    <div class="article-content">
+                                        <h3 class="entry-title">
+                                            <a href="/@item.Alias-@(item.ID).html">@item.Name</a>
+                                        </h3>
+                                        <p>@item.Description</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="loop-pagination">
+                        @if (Model.TotalPages > 1)
+                        {
+                            // Create numeric links
+                            var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+                            var endPageIndex = Math.Min(Model.TotalPages, Model.Page + Model.MaxPage / 2);
+
+                            <nav>
+                                <ul class="pagination" style="display:block;">
+                                    @if (Model.Page > 1)
+                {
+                                        <li>
+                                            <a href="?page=1" aria-label="First">
+                                                <i class="fa fa-angle-double-left"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="?page=@(Model.Page-1)" aria-label="Previous">
+                                                <i class="fa fa-angle-left"></i>
+                                            </a>
+                                        </li>
+                                    }
+
+                                    @for (int i = startPageIndex; i <= endPageIndex; i++)
+                                    {
+                                        if (Model.Page == i)
+                                        {
+                                            <li class="active"><a href="?page=@i" title="Trang @i">@i</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="?page=@i" title="Trang @i">@i</a></li>
+                                        }
+                                    }
+                                    @if (Model.Page < Model.TotalPages)
+                {
+                                        <li>
+                                            <a href="?page=@(Model.Page+1)" aria-label="Next">
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="?page=@Model.TotalPages" aria-label="Last">
+                                                <i class="fa fa-angle-double-right"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </nav>
+                        }
+                    </div>
+
+                    <style type="text/css">
+                        .pagination .loop-pagination span.disable {
+                            background-color: #ccc;
+                            border: 1px solid #ccc;
+                        }
+
+                        .pagination .loop-pagination a, .pagination .loop-pagination span {
+                            padding: 2px 10px;
+                            border: 1px solid #333;
+                            color: #fff;
+                            margin: 0 3px;
+                            display: inline-block;
+                            background-color: #333;
+                        }
+
+                            .pagination .loop-pagination a:hover, .pagination .loop-pagination a.active, .pagination .loop-pagination span.current {
+                                background-color: #df0000;
+                                color: #fff;
+                                border-color: #df0000;
+                            }
+                    </style>
+                </div>
+            </div>
+        </div>
+        <div class="secondary">
+            <div id="recent-posts-hot-3" class="right-column recent-posts-hot-class">
+                <div class="inner">
+                    <div class="featured_posts clearfix" id="weekly-news">
+                        <h3 class="widget-title pink"><a href="javascript:;"><span>Tin nổi bật</span></a></h3>
+                        <div class="vertical_posts ">
+                            @{ Html.RenderAction("NewsHot", "Post");}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @{ Html.RenderAction("Banner", "Post");}
+        </div>
+    </div>
+</div>

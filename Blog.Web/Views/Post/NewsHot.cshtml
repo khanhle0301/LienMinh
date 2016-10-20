@@ -1,0 +1,18 @@
+﻿@model  IEnumerable<Blog.Web.Models.PostViewModel>
+
+@foreach (var item in Model)
+{
+    <div class="single-article clearfix">
+        <figure>
+            <a href="/@item.Alias-@(item.ID).html" title="@item.Name" rel="bookmark">
+                <img width="300" height="200" src="@item.Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="@item.Name" />
+            </a>
+        </figure>
+        <div class="article-content">
+            <h3 class="entry-title">
+                <a href="/@item.Alias-@(item.ID).html">@item.Name</a>
+            </h3>
+        </div>
+    </div>
+}
+

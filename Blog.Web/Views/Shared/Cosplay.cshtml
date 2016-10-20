@@ -1,0 +1,36 @@
+﻿@model Blog.Web.Models.HomeCosplayViewModel
+
+<h3 class="widget-title blue">
+    <a href="/hinh-anh.html"><span>Hình Ảnh</span></a>
+    <p class="linktabs">
+        @foreach (var child in Model.ChildCategory)
+        {
+            <a href="/@(child.Alias).html">@child.Name</a>
+        }
+    </p>
+</h3>
+<ul class="postimg">
+    @foreach (var post in Model.Cosplays)
+    {
+        <li>
+            <div class="item-im">
+                <a class="bx-img" href="/@post.Alias-@(post.ID).html" title="@post.Name" rel="bookmark">
+                    <img width="455" height="260" src="@post.Image" class="attachment-large size-large wp-post-image" alt="@post.Name" 0="45" 1="45" 2="1" />
+                </a>
+                <a class="act" href="/@post.Alias-@(post.ID).html">@post.Name</a>
+            </div>
+        </li>
+    }
+
+</ul>
+
+<style>
+    .postimg .item-im .bx-img img {
+        opacity: 1;
+    }
+
+        .postimg .item-im .bx-img img:hover {
+            opacity: 0.8;
+        }
+</style>
+
