@@ -9,7 +9,7 @@
             <p class="linktabs">
                 @foreach (var child in Model.ChildCategory)
                 {
-                    <a href="/@(child.Alias).html">@child.Name</a>
+                    <a href="/@(child.Alias).pc-@(child.ID).html">@child.Name</a>
                 }
             </p>
         </h3>
@@ -18,12 +18,12 @@
             {
                 <div class="single-article clearfix">
                     <figure>
-                        <a class="bx-img" href="/@post.Alias-@(post.ID).html" title="@post.Name" rel="bookmark">
+                        <a class="bx-img" href="/@(post.Alias).p-@(post.ID).html" title="@post.Name" rel="bookmark">
                             <img width="600" height="338" src="@post.Image" class="attachment-large size-large wp-post-image" alt="@post.Name" 0="45" 1="45" 2="1" srcset="@post.Image 300w, @post.Image 600w" sizes="(max-width: 600px) 100vw, 600px" />
                         </a>
                     </figure>
                     <div class="article-content">
-                        <h3 class="entry-title"> <a href="/@post.Alias-@(post.ID).html">@post.Name</a> </h3>
+                        <h3 class="entry-title"> <a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a> </h3>
                         <p>@post.Description</p>
                     </div>
                 </div>
@@ -43,13 +43,13 @@
                 @foreach (var post in Model.Camnang.Take(1))
                 {
                     <figure>
-                        <a class="bx-img" href="/@post.Alias-@(post.ID)/" title="@post.Name" rel="bookmark">
+                        <a class="bx-img" href="/@(post.Alias).p-@(post.ID).html" title="@post.Name" rel="bookmark">
                             <img width="455" height="260" src="@post.Image" class="attachment-large size-large wp-post-image" alt="@post.Name" 0="45" 1="45" 2="1" />
                         </a>
                     </figure>
                     <div class="article-content">
                         <h3 class="entry-title">
-                            <a href="/@post.Alias-@(post.ID)/">@post.Name</a>
+                            <a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a>
                         </h3>
                         <p>@post.Description </p>
                     </div>
@@ -60,7 +60,7 @@
             {
                 <ul class="listsubnews">
                     <li>
-                        <a href="/@post.Alias-@(post.ID)/">@post.Name</a>
+                        <a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a>
                     </li>
                 </ul>
             }

@@ -14,9 +14,9 @@
                     <span>Video</span>
                 </a>
                 <p class="linktabs">
-                    @foreach (var category in (IEnumerable<Blog.Web.Models.PostCategoryViewModel>)ViewBag.ChildCategory)
+                    @foreach (var post in (IEnumerable<Blog.Web.Models.PostCategoryViewModel>)ViewBag.ChildCategory)
                     {
-                        <a href="/@(category.Alias).html">@category.Name</a>
+                        <a href="/@(post.Alias).pc-@(post.ID).html">@post.Name</a>
                     }
                 </p>
 
@@ -25,14 +25,14 @@
                 <div class="lastest-post">
                     <div class="featured_posts clearfix" id="videos">
                         <ul class="postvideo">
-                            @foreach (var item in Model.Items)
+                            @foreach (var post in Model.Items)
                             {
                                 <li style="">
-                                    <div class="item-vd">
-                                        <a class="bx-img" href="/@item.Alias-@(item.ID).html">
-                                            <img width="300" height="200" src="@item.Image" class="alignleft featured_image wp-post-image" alt="@item.Name" />
+                                    <div class="post-vd">
+                                        <a class="bx-img" href="/@(post.Alias).p-@(post.ID).html">
+                                            <img width="300" height="200" src="@post.Image" class="alignleft featured_image wp-post-image" alt="@post.Name" />
                                         </a>
-                                        <a class="act" href="/@item.Alias-@(item.ID).html">@item.Name</a>
+                                        <a class="act" href="/@(post.Alias).p-@(post.ID).html">@post.Name</a>
                                     </div>
                                 </li>
                             }

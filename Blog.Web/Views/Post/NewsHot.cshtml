@@ -1,16 +1,16 @@
 ﻿@model  IEnumerable<Blog.Web.Models.PostViewModel>
 
-@foreach (var item in Model)
+@foreach (var post in Model)
 {
     <div class="single-article clearfix">
         <figure>
-            <a href="/@item.Alias-@(item.ID).html" title="@item.Name" rel="bookmark">
-                <img width="300" height="200" src="@item.Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="@item.Name" />
+            <a href="/@(post.Alias).p-@(post.ID).html" title="@post.Name" rel="bookmark">
+                <img width="300" height="200" src="@post.Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="@post.Name" />
             </a>
         </figure>
         <div class="article-content">
             <h3 class="entry-title">
-                <a href="/@item.Alias-@(item.ID).html">@item.Name</a>
+                <a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a>
             </h3>
         </div>
     </div>

@@ -63,20 +63,20 @@ namespaces: new string[] { "Blog.Web.Controllers" }
   namespaces: new string[] { "Blog.Web.Controllers" }
 );
 
-            routes.MapRoute(
- name: "Detail",
- url: "{alias}-{id}.html",
- defaults: new { controller = "Post", action = "Detail", id = UrlParameter.Optional },
- namespaces: new string[] { "Blog.Web.Controllers" }
-);
 
             routes.MapRoute(
   name: "Category",
-  url: "{alias}.html",
+  url: "{alias}.pc-{id}.html",
   defaults: new { controller = "Post", action = "Category", alias = UrlParameter.Optional },
   namespaces: new string[] { "Blog.Web.Controllers" }
 );
 
+            routes.MapRoute(
+ name: "Detail",
+ url: "{alias}.p-{productId}.html",
+ defaults: new { controller = "Post", action = "Detail", productId = UrlParameter.Optional },
+ namespaces: new string[] { "Blog.Web.Controllers" }
+);
 
             routes.MapRoute(
                 name: "Default",

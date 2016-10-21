@@ -15,12 +15,12 @@
                         @foreach (var post in Model.LastedNews.Take(1))
             {
                             <figure>
-                                <a class="bx-img" href="/@post.Alias-@(post.ID).html" title="@post.Name" rel="bookmark">
+                                <a class="bx-img" href="/@(post.Alias).p-@(post.ID).html" title="@post.Name" rel="bookmark">
                                     <img width="600" height="338" src="@post.Image" class="attachment-medium size-medium wp-post-image" alt="@post.Name" srcset="@post.Image 300w, @post.Image 600w, @post.Image 852w" sizes="(max-width: 600px) 100vw, 600px" />
                                 </a>
                             </figure>
                             <div class="article-content">
-                                <h3 class="entry-title"> <a href="/@post.Alias-@(post.ID).html">@post.Name</a> </h3>
+                                <h3 class="entry-title"> <a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a> </h3>
                                 <p>@post.Description</p>
                             </div>
                         }
@@ -33,7 +33,7 @@
                                 @foreach (var post in Model.LastedNews.Skip(1))
                                 {
                                     <li>
-                                        <a href="/@post.Alias-@(post.ID).html">@post.Name</a>
+                                        <a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a>
                                     </li>
                                 }
                             </ul>

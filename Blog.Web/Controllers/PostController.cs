@@ -142,9 +142,21 @@ namespace Blog.Web.Controllers
             return View(paginationSet);
         }
 
-        public ActionResult Category(string alias, int page = 1)
+        public ActionResult Detail(int productId)
         {
-            var category = _postCategoryDao.GetByAlias(alias);
+            var post = _postDao.GetById(productId);
+            var viewModel = Mapper.Map<Post, PostViewModel>(post);
+            ViewBag.Tags = Mapper.Map<IEnumerable<Tag>, IEnumerable<TagViewModel>>(_postDao.GetListTagByPostId(productId));
+
+            var relatedPost = _postDao.GetReatedPosts(productId, 6);
+            ViewBag.RelatedPosts = Mapper.Map<IEnumerable<Post>, IEnumerable<PostViewModel>>(relatedPost);
+            _postDao.IncreaseView(productId);
+            return View(viewModel);
+        }
+
+        public ActionResult Category(int id, int page = 1)
+        {
+            var category = _postCategoryDao.GetById(id);
             int pageSize = int.Parse(ConfigHelper.GetByKey("PageSizeCategory"));
             int totalRow = 0;
             var postViewModel = Mapper.Map<IEnumerable<Post>, IEnumerable<PostViewModel>>(_postDao.GetAllByCategoryPaging(category.ID, page, pageSize, out totalRow));
@@ -159,19 +171,7 @@ namespace Blog.Web.Controllers
             };         
             ViewBag.Category = category;         
             return View(paginationSet);
-        }
-
-        public ActionResult Detail(int id)
-        {
-            var post = _postDao.GetById(id);
-            var viewModel = Mapper.Map<Post, PostViewModel>(post);
-            ViewBag.Tags = Mapper.Map<IEnumerable<Tag>, IEnumerable<TagViewModel>>(_postDao.GetListTagByPostId(id));
-
-            var relatedPost = _postDao.GetReatedPosts(id, 6);
-            ViewBag.RelatedPosts = Mapper.Map<IEnumerable<Post>, IEnumerable<PostViewModel>>(relatedPost);
-            _postDao.IncreaseView(id);          
-            return View(viewModel);
-        }
+        }     
 
         public ActionResult ListByTag(string tagId, int page = 1)
         {

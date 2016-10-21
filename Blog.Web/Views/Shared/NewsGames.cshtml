@@ -4,56 +4,56 @@
         <h3 class="widget-title orange">
             <a href="/tin-game.html"><span>Tin Game</span></a>
             <p class="linktabs">
-                @foreach (var category in Model.ChildCategory)
+                @foreach (var child in Model.ChildCategory)
                 {
-                    <a href="/@(category.Alias)/">@category.Name</a>
+                    <a href="/@(child.Alias).pc-@(child.ID).html">@child.Name</a>
                 }
             </p>
         </h3>
         <div class="first-post tg-one">
             <div class="single-article">
-                @foreach (var category in Model.NewsGame.Take(1))
+                @foreach (var post in Model.NewsGame.Take(1))
             {
                     <figure>
-                        <a class="bx-img" href="/@category.Alias-@(category.ID).html" title="@category.Name" rel="bookmark">
-                            <img width="600" height="338" src="@category.Image" class="attachment-large size-large wp-post-image" alt="@category.Name" 0="45" 1="45" 2="1" srcset="@category.Image 300w, @category.Image 600w" sizes="(max-width: 600px) 100vw, 600px" />
+                        <a class="bx-img" href="/@(post.Alias).p-@(post.ID).html" title="@post.Name" rel="bookmark">
+                            <img width="600" height="338" src="@post.Image" class="attachment-large size-large wp-post-image" alt="@post.Name" 0="45" 1="45" 2="1" srcset="@post.Image 300w, @post.Image 600w" sizes="(max-width: 600px) 100vw, 600px" />
                         </a>
                     </figure>
                     <div class="article-content">
-                        <h3 class="entry-title"><a href="/@category.Alias-@(category.ID).html">@category.Name</a> </h3>
-                        <p>@category.Description</p>
+                        <h3 class="entry-title"><a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a> </h3>
+                        <p>@post.Description</p>
                     </div>
                 }
             </div>
             <ul class="listsubnews">
-                @foreach (var category in Model.NewsGame.Skip(2).Take(2))
+                @foreach (var post in Model.NewsGame.Skip(2).Take(2))
                 {
                     <li>
-                        <a href="/@category.Alias-@(category.ID).html">@category.Name</a>
+                        <a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a>
                     </li>
                 }
             </ul>
         </div>
         <div class="first-post  tg-two">
             <div class="single-article">
-                @foreach (var category in Model.NewsGame.Skip(1).Take(1))
+                @foreach (var post in Model.NewsGame.Skip(1).Take(1))
             {
                     <figure>
-                        <a class="bx-img" href="/@category.Alias-@(category.ID).html" title="@category.Name" rel="bookmark">
-                            <img width="600" height="338" src="@category.Image" class="attachment-large size-large wp-post-image" alt="@category.Name" 0="45" 1="45" 2="1" srcset="@category.Image 300w, @category.Image 600w" sizes="(max-width: 600px) 100vw, 600px" />
+                        <a class="bx-img" href="/@(post.Alias).p-@(post.ID).html" title="@post.Name" rel="bookmark">
+                            <img width="600" height="338" src="@post.Image" class="attachment-large size-large wp-post-image" alt="@post.Name" 0="45" 1="45" 2="1" srcset="@post.Image 300w, @post.Image 600w" sizes="(max-width: 600px) 100vw, 600px" />
                         </a>
                     </figure>
                     <div class="article-content">
-                        <h3 class="entry-title"><a href="/@category.Alias-@(category.ID).html">@category.Name</a> </h3>
-                        <p>@category.Description</p>
+                        <h3 class="entry-title"><a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a> </h3>
+                        <p>@post.Description</p>
                     </div>
                 }
             </div>
             <ul class="listsubnews">
-                @foreach (var category in Model.NewsGame.Skip(4).Take(2))
+                @foreach (var post in Model.NewsGame.Skip(4).Take(2))
                 {
                     <li>
-                        <a href="/@category.Alias-@(category.ID).html">@category.Name</a>
+                        <a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a>
                     </li>
                 }
             </ul>
@@ -88,12 +88,12 @@
                     {
                         <div class="single-article clearfix">
                             <figure>
-                                <a href="/@post.Alias-@(post.ID).html" title="@post.Name" rel="bookmark">
+                                <a href="/@(post.Alias).p-@(post.ID).html" title="@post.Name" rel="bookmark">
                                     <img width="300" height="200" src="@post.Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="@post.Name" />
                                 </a>
                             </figure>
                             <div class="article-content">
-                                <h3 class="entry-title"> <a href="/@post.Alias-@(post.ID).html">@post.Name</a> </h3>
+                                <h3 class="entry-title"> <a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a> </h3>
                             </div>
                         </div>
                     }

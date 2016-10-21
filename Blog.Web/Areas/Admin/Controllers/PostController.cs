@@ -104,7 +104,7 @@ namespace Blog.Web.Areas.Admin.Controllers
 
         public void SetViewBag(int? selectedId = null)
         {
-            ViewBag.CategoryID = new SelectList(_posCategoryDao.ListByChild(), "ID", "Name", selectedId);
+            ViewBag.CategoryID = new SelectList(_posCategoryDao.ListAllPaging(), "ID", "Name", selectedId);
         }
 
         [HasCredential(RoleID = "DELETE_POST")]

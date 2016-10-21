@@ -21,19 +21,19 @@
 
                     <div class="featured_posts clearfix" id="newsEsports">
                         <div class="lastest-post">
-                            @foreach (var item in Model.Items)
+                            @foreach (var post in Model.Items)
                             {
                                 <div class="single-article clearfix">
                                     <figure>
-                                        <a href="/@item.Alias-@(item.ID).html">
-                                            <img width="600" height="338" src="@item.Image" class="attachment-large size-large wp-post-image" alt="@item.Name" 0="300" 1="200" srcset="@item.Image 300w, @item.Image 600w" sizes="(max-width: 600px) 100vw, 600px" />
+                                        <a href="/@(post.Alias).p-@(post.ID).html">
+                                            <img width="600" height="338" src="@post.Image" class="attachment-large size-large wp-post-image" alt="@post.Name" 0="300" 1="200" srcset="@post.Image 300w, @post.Image 600w" sizes="(max-width: 600px) 100vw, 600px" />
                                         </a>
                                     </figure>
                                     <div class="article-content">
                                         <h3 class="entry-title">
-                                            <a href="/@item.Alias-@(item.ID).html">@item.Name</a>
+                                            <a href="/@(post.Alias).p-@(post.ID).html">@post.Name</a>
                                         </h3>
-                                        <p>@item.Description</p>
+                                        <p>@post.Description</p>
                                     </div>
                                 </div>
                             }

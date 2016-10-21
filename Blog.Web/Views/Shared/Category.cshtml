@@ -10,12 +10,12 @@
     {
         <li id="menu-item-32" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-32">
             <a href="/@(category.Alias).html">@category.Name</a>
-            <ul class='sub-menu'>              
+            <ul class='sub-menu'>
                 <div class='inner'>
                     @foreach (var childCategory in childCategories)
                     {
                         <li id="menu-item-969931" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-969931">
-                            <a href="/@(childCategory.Alias).html">@childCategory.Name</a>
+                            <a href="/@(childCategory.Alias).pc-@(childCategory.ID).html">@childCategory.Name</a>
                         </li>
                     }
                 </div>
@@ -25,7 +25,7 @@
     else
     {
         <li id="menu-item-42" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-42">
-            <a href="/@(category.Alias).html">@category.Name</a>
+            <a href="/@(category.Alias).pc-@(category.ID).html">@category.Name</a>
         </li>
     }
 }
